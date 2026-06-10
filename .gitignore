@@ -1,0 +1,9 @@
+# Maven build output
+/target/
+
+# Data files generated at runtime
+*.dat
+
+# IDE / editor metadata
+/.idea/
+*.iml
