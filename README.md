@@ -76,8 +76,8 @@ Pipeline mengikuti empat tahap berurutan dari kode hingga rilis:
 |--------------|-----|---------------------------|
 | Rakha Raihanurrahman | 103022300046 | **Integration** — manajemen repository, branching, & proses build/kompilasi |
 | Muhammad Fadli Achsan K | 103022300018 | **Testing** — unit testing (JUnit 5) & pelaporan hasil uji |
-| Khalish Tianto Wiriadinata | 103022300136 | **Inspection** — analisis kualitas kode & *quality gate* |
-| Anak Agung Aryadipa Aditya Nugraha | 103022300063 | **Deployment** — pembuatan artefak JAR, rilis, & deploy ke environment target |
+| Anak Agung Aryadipa Aditya Nugraha | 103022300063 | **Inspection** — analisis kualitas kode & *quality gate* |
+| Khalish Tianto Wiriadinata | 103022300136 | **Deployment** — pembuatan artefak JAR, rilis, & deploy ke environment target |
 
 ---
 
