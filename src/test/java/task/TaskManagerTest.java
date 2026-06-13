@@ -40,7 +40,7 @@ class TaskManagerTest {
     @Test
     void addWorkTaskStoresTask() {
         TaskManager manager = new TaskManager(TEST_USER);
-        manager.addTask("Rapat", "Rapat tim", futureDate, "Work");
+        manager.addTask("Rapat", "Rapat Tim", futureDate, "Work");
 
         assertEquals(1, manager.getTasks().size());
         assertEquals("Work", manager.getTasks().get(0).getTaskType());
