@@ -18,8 +18,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <!-- SonarCloud -->
-        <sonar.organization>khalishs</sonar.organization>
-        <sonar.projectKey>khalishs_CI-CD_TaskList</sonar.projectKey>
+        <sonar.organization>YOUR_ORGANIZATION</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     </properties>
 
@@ -37,7 +36,9 @@
         <repository>
             <id>github</id>
             <name>GitHub Packages</name>
-            <url>https://maven.pkg.github.com/khalishs/CI-CD_TaskList</url>
+            <url>
+                https://maven.pkg.github.com/USERNAME/REPOSITORY
+            </url>
         </repository>
     </distributionManagement>
 
@@ -45,7 +46,6 @@
         <finalName>tasklist</finalName>
 
         <plugins>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -58,18 +58,11 @@
                 <version>3.2.5</version>
             </plugin>
 
-            <!-- SonarCloud -->
-            <plugin>
-                <groupId>org.sonarsource.scanner.maven</groupId>
-                <artifactId>sonar-maven-plugin</artifactId>
-                <version>5.1.0.4751</version>
-            </plugin>
-
             <!-- Bikin JAR yang bisa langsung dijalankan -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>3.4.2</version>
+                <version>3.4.1</version>
                 <configuration>
                     <archive>
                         <manifest>
@@ -78,7 +71,6 @@
                     </archive>
                 </configuration>
             </plugin>
-
         </plugins>
     </build>
 
