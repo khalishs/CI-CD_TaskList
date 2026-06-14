@@ -18,7 +18,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <!-- SonarCloud -->
-        <sonar.organization>YOUR_ORGANIZATION</sonar.organization>
+        <sonar.organization>khalishs</sonar.organization>
+        <sonar.projectKey>khalishs_CI-CD_TaskList</sonar.projectKey>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     </properties>
 
