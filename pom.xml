@@ -2,6 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.fizryan</groupId>
@@ -15,6 +16,10 @@
     <properties>
         <maven.compiler.release>21</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!-- SonarCloud -->
+        <sonar.organization>YOUR_ORGANIZATION</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     </properties>
 
     <dependencies>
@@ -26,8 +31,20 @@
         </dependency>
     </dependencies>
 
+    <!-- GitHub Packages -->
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub Packages</name>
+            <url>
+                https://maven.pkg.github.com/khalishs/CI-CD_TaskList
+            </url>
+        </repository>
+    </distributionManagement>
+
     <build>
         <finalName>tasklist</finalName>
+
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -41,7 +58,7 @@
                 <version>3.2.5</version>
             </plugin>
 
-            <!-- Bikin JAR yang bisa langsung dijalankan: java -jar target/tasklist.jar -->
+            <!-- Bikin JAR yang bisa langsung dijalankan -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
@@ -56,4 +73,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>
