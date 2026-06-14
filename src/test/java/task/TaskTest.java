@@ -8,7 +8,7 @@ class TaskTest {
 
     @Test
     void personalTaskReturnsCorrectType() {
-        Task task = new PersonalTask("Belajar Java", "Polymorphism", "01-01-2025", "12-12-2025");
+        Task task = new PersonalTask("Belajar Java", "Polymorphism", "01-01-2025", "12-12-2025"); 
         assertEquals("Personal", task.getTaskType());
     }
 
