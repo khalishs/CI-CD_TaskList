@@ -1,7 +1,5 @@
 package task;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -12,89 +10,126 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class TaskManagerTest {
 
-    private static final String TEST_USER = "junit_test_user";
-    private String futureDate;
+    @Test
+    void test1() {
+        new File("junit_test_user.dat").delete();
 
-    @BeforeEach
-    void setUp() {
-        new File(TEST_USER + ".dat").delete();
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-        // a date well in the future so it always passes the "not in the past" check
-        futureDate = sdf.format(new Date(System.currentTimeMillis() + 1000L * 60 * 60 * 24 * 365));
-    }
+        String d = sdf.format(new Date(System.currentTimeMillis() + 1000L * 60 * 60 * 24 * 365));
 
-    @AfterEach
-    void tearDown() {
-        new File(TEST_USER + ".dat").delete();
-    }
+        TaskManager m = new TaskManager("junit_test_user");
+        m.addTask("Belajar", "Belajar CI/CD", d, "Personal");
 
-    @Test
-    void addPersonalTaskStoresTask() {
-        TaskManager manager = new TaskManager(TEST_USER);
-        manager.addTask("Belajar", "Belajar CI/CD", futureDate, "Personal");
+        assertEquals(1, m.getTasks().size());
+        assertEquals("Personal", m.getTasks().get(0).getTaskType());
 
-        assertEquals(1, manager.getTasks().size());
-        assertEquals("Personal", manager.getTasks().get(0).getTaskType());
+        new File("junit_test_user.dat").delete();
     }
 
     @Test
-    void addWorkTaskStoresTask() {
-        TaskManager manager = new TaskManager(TEST_USER);
-        manager.addTask("Rapat", "Rapat Tim", futureDate, "Work");
+    void test2() {
+        new File("junit_test_user.dat").delete();
 
-        assertEquals(1, manager.getTasks().size());
-        assertEquals("Work", manager.getTasks().get(0).getTaskType());
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        String d = sdf.format(new Date(System.currentTimeMillis() + 1000L * 60 * 60 * 24 * 365));
+
+        TaskManager m = new TaskManager("junit_test_user");
+        m.addTask("Rapat", "Rapat Tim", d, "Work");
+
+        assertEquals(1, m.getTasks().size());
+        assertEquals("Work", m.getTasks().get(0).getTaskType());
+
+        new File("junit_test_user.dat").delete();
     }
 
     @Test
-    void addTaskWithInvalidTypeIsRejected() {
-        TaskManager manager = new TaskManager(TEST_USER);
-        manager.addTask("Salah", "Tipe salah", futureDate, "Unknown");
+    void test3() {
+        new File("junit_test_user.dat").delete();
 
-        assertTrue(manager.getTasks().isEmpty());
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        String d = sdf.format(new Date(System.currentTimeMillis() + 1000L * 60 * 60 * 24 * 365));
+
+        TaskManager m = new TaskManager("junit_test_user");
+        m.addTask("Salah", "Tipe salah", d, "Unknown");
+
+        assertTrue(m.getTasks().isEmpty());
+
+        new File("junit_test_user.dat").delete();
     }
 
     @Test
-    void addTaskWithInvalidDateIsRejected() {
-        TaskManager manager = new TaskManager(TEST_USER);
-        manager.addTask("Salah", "Tanggal salah", "not-a-date", "Personal");
+    void test4() {
+        new File("junit_test_user.dat").delete();
 
-        assertTrue(manager.getTasks().isEmpty());
+        TaskManager m = new TaskManager("junit_test_user");
+        m.addTask("Salah", "Tanggal salah", "not-a-date", "Personal");
+
+        assertTrue(m.getTasks().isEmpty());
+
+        new File("junit_test_user.dat").delete();
     }
 
     @Test
-    void editTaskUpdatesFields() {
-        TaskManager manager = new TaskManager(TEST_USER);
-        manager.addTask("Lama", "Deskripsi lama", futureDate, "Personal");
-        manager.editTask(0, "Baru", "Deskripsi baru", futureDate);
+    void test5() {
+        new File("junit_test_user.dat").delete();
 
-        Task edited = manager.getTasks().get(0);
-        assertEquals("Baru", edited.getTaskName());
-        assertEquals("Deskripsi baru", edited.getDescription());
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        String d = sdf.format(new Date(System.currentTimeMillis() + 1000L * 60 * 60 * 24 * 365));
+
+        TaskManager m = new TaskManager("junit_test_user");
+
+        m.addTask("Lama", "Deskripsi lama", d, "Personal");
+        m.editTask(0, "Baru", "Deskripsi baru", d);
+
+        assertEquals("Baru", m.getTasks().get(0).getTaskName());
+        assertEquals("Deskripsi baru", m.getTasks().get(0).getDescription());
+
+        new File("junit_test_user.dat").delete();
     }
 
     @Test
-    void editTaskWithInvalidIdDoesNotThrow() {
-        TaskManager manager = new TaskManager(TEST_USER);
-        assertDoesNotThrow(() -> manager.editTask(99, "X", "Y", futureDate));
+    void test6() {
+        TaskManager x = new TaskManager("junit_test_user");
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        String abc = sdf.format(new Date(System.currentTimeMillis() + 1000L * 60 * 60 * 24 * 365));
+
+        assertDoesNotThrow(() -> x.editTask(99, "X", "Y", abc));
     }
 
     @Test
-    void deleteTaskRemovesTask() {
-        TaskManager manager = new TaskManager(TEST_USER);
-        manager.addTask("Hapus", "Akan dihapus", futureDate, "Personal");
-        manager.deleteTask(0);
+    void test7() {
+        new File("junit_test_user.dat").delete();
 
-        assertTrue(manager.getTasks().isEmpty());
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        String d = sdf.format(new Date(System.currentTimeMillis() + 1000L * 60 * 60 * 24 * 365));
+
+        TaskManager m = new TaskManager("junit_test_user");
+
+        m.addTask("Hapus", "Akan dihapus", d, "Personal");
+        m.deleteTask(0);
+
+        assertTrue(m.getTasks().isEmpty());
+
+        new File("junit_test_user.dat").delete();
     }
 
     @Test
-    void tasksPersistAcrossManagerInstances() {
-        TaskManager manager = new TaskManager(TEST_USER);
-        manager.addTask("Persisten", "Tersimpan di file", futureDate, "Work");
+    void test8() {
+        new File("junit_test_user.dat").delete();
 
-        TaskManager reloaded = new TaskManager(TEST_USER);
-        assertEquals(1, reloaded.getTasks().size());
-        assertEquals("Persisten", reloaded.getTasks().get(0).getTaskName());
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        String d = sdf.format(new Date(System.currentTimeMillis() + 1000L * 60 * 60 * 24 * 365));
+
+        TaskManager m = new TaskManager("junit_test_user");
+
+        m.addTask("Persisten", "Tersimpan di file", d, "Work");
+
+        TaskManager y = new TaskManager("junit_test_user");
+
+        assertEquals(1, y.getTasks().size());
+        assertEquals("Persisten", y.getTasks().get(0).getTaskName());
+
+        new File("junit_test_user.dat").delete();
     }
 }
