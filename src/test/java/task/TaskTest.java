@@ -15,7 +15,7 @@ class TaskTest {
     @Test
     void workTaskReturnsCorrectType() {
         Task task = new WorkTask("Laporan", "Laporan bulanan", "01-01-2025", "12-12-2025");
-        assertEquals("Work", task.getTaskType());
+        assertEquals("Work", task.getTaskType()); 
     }
 
     @Test
