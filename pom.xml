@@ -5,9 +5,9 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.fizryan</groupId>
+    <groupId>com.TaskList</groupId>
     <artifactId>tasklist</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <packaging>jar</packaging>
 
     <name>Task Manager Application</name>
