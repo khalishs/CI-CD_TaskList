@@ -76,7 +76,7 @@ class TaskManagerTest {
     @Test
     void editTaskWithInvalidIdDoesNotThrow() {
         TaskManager manager = new TaskManager(TEST_USER);
-        assertDoesNotThrow(() -> manager.editTask(99, "X", "Y", futureDate));
+        assertDoesNotThrow(() -> manager.editTask23(99, "X", "Y", futureDate));
     }
 
     @Test
