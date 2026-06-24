@@ -17,7 +17,7 @@ class TaskManagerTest {
 
     @BeforeEach
     void setUp() {
-        new File(TEST_USER + ".dat").delete();
+        new File(TEST + ".dat").delete();
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         // a date well in the future so it always passes the "not in the past" check
         futureDate = sdf.format(new Date(System.currentTimeMillis() + 1000L * 60 * 60 * 24 * 365));
